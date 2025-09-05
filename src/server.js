@@ -11,7 +11,7 @@ const jobs = {};
 
 const getVideoInfo = (url) => {
     return new Promise((resolve, reject) => {
-        const command = `./yt-dlp --dump-json ${url}`;
+        const command = `./yt-dlp --cookies cookies.txt --dump-json ${url}`;
         exec(command, (error, stdout, stderr) => {
             if (error) {
                 console.error(`stderr: ${stderr}`);
@@ -74,3 +74,4 @@ app.get('/get-status/:jobId', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
